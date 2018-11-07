@@ -5,6 +5,6 @@ class BlogSpider(scrapy.Spider):
     start_urls = ['https://fr.wikipedia.org/wiki/Cat%C3%A9gorie:Personnage_d%27animation']
 
     def parse(self, response):
-        for title in response.css('div#mw-content-ltr li'):
+        for title in response.css('div#mw-pages li'):
             yield {'character': title.css('a ::text').extract_first()}
 
